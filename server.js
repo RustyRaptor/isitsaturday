@@ -3,10 +3,7 @@ const request = require('request');
 const hbs = require('hbs');
 const fs = require('fs');
 const date = require("date");
-
-
 const port = process.env.PORT || 3000;
-
 var app = express();
 
 hbs.registerPartials(__dirname + '/views/partials')
@@ -20,10 +17,6 @@ app.use((req, res, next) => {
   fs.appendFile('server.log', log + '\n');
   next();
 });
-
-// app.use((req, res, next) => {
-//   res.render('maintenance.hbs');
-// });
 
 app.use(express.static(__dirname + '/public'));
 
@@ -47,11 +40,9 @@ app.get('/', (req, res) => {
     } else if (response.statusCode === 400) {
       console.log('Unable to fetch weather.');
     } else if (response.statusCode === 200) {
-      console.log(body.formatted);
       var dateKiri = body.formatted
-      var datefKiri = new Date(dateKiri);
-      var dayKiri = datefKiri.getDay();
-      console.log(dayKiri);
+      var dateKiriFormatted = new Date(dateKiri);
+      var dayKiri = dateKiriFormatted.getDay();
       if (dayKiri === 6) {
         res.render('isitsaturday.hbs', {
           pageTitle: 'Is it saturday?',
@@ -71,17 +62,7 @@ app.get('/', (req, res) => {
       }
     }
   });
-
 });
-
-
-// /bad - send back json with errorMessage
-app.get('/bad', (req, res) => {
-  res.send({
-    errorMessage: 'Unable to handle request'
-  });
-});
-
 
 app.listen(port, () => {
   console.log(`Server is up on port ${port}`);
