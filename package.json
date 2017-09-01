@@ -1,0 +1,19 @@
+{
+  "name": "isitsaturday",
+  "version": "0.0.1",
+  "description": "Checks if it's shitpost saturday",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Ziad Alexander",
+  "license": "MIT",
+  "dependencies": {
+    "date": "^1.0.2",
+    "express": "^4.15.4",
+    "fs": "0.0.1-security",
+    "hbs": "^4.0.1",
+    "request": "^2.81.0"
+  }
+}
