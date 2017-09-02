@@ -50,6 +50,7 @@ app.get("/", (req, res) => {
             welcomeMessage: "let's find out",
             saturday: "YES!",
             video: "https://my.mixtape.moe/ymiizt.mp4",
+            preview: "http://i.imgur.com/o9fmi5P.png",
             color: "green"
           // res.render("saturday.hbs", {
           //   pageTitle: "Is it saturday?",
@@ -82,6 +83,7 @@ app.get("/", (req, res) => {
                     welcomeMessage: "let's find out",
                     saturday: "YES!",
                     video: "https://my.mixtape.moe/ymiizt.mp4",
+                    preview: "http://i.imgur.com/o9fmi5P.png",
                     color: "green"
                   });
                 } else {
@@ -90,6 +92,7 @@ app.get("/", (req, res) => {
                     welcomeMessage: "let's find out",
                     saturday: "NO!",
                     video: "https://my.mixtape.moe/kqpane.mp4",
+                    preview: "http://i.imgur.com/DNMyePH.png",
                     color: "red"
                   });
                 }
