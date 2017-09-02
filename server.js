@@ -39,25 +39,62 @@ app.get("/", (req, res) => {
       if (error) {
         console.log("Unable to connect to timezonedb server.");
       } else if (response.statusCode === 400) {
-        console.log("Unable to fetch weather.");
+        console.log("Unable to fetch timezone.");
       } else if (response.statusCode === 200) {
         var dateKiri = body.formatted;
         var dateKiriFormatted = new Date(dateKiri);
         var dayKiri = dateKiriFormatted.getDay();
         if (dayKiri === 6) {
-          res.render("itissaturday.hbs", {
+          res.render("saturday.hbs", {
             pageTitle: "Is it saturday?",
             welcomeMessage: "let's find out",
             saturday: "YES!",
+            video: "https://my.mixtape.moe/ymiizt.mp4",
             color: "green"
+          // res.render("saturday.hbs", {
+          //   pageTitle: "Is it saturday?",
+          //   welcomeMessage: "let's find out",
+          //   saturday: "NO!",
+          //   video: "https://my.mixtape.moe/kqpane.mp4",
+          //   color: "red"
+          //   This is just for testing purposes DO NOT UNCOMMENT
           });
         } else {
-          res.render("itisnotsaturday.hbs", {
-            pageTitle: "Is it saturday?",
-            welcomeMessage: "let's find out",
-            saturday: "NO!",
-            color: "red"
-          });
+          request(
+            {
+              url:
+                "http://api.timezonedb.com/v2/get-time-zone?key=IV72MJ6RFHL7&format=json&by=zone&zone=Pacific/Midway",
+              json: true
+            },
+            (error, response, body) => {
+              if (error) {
+                console.log("Unable to connect to timezonedb server.");
+              } else if (response.statusCode === 400) {
+                console.log("Unable to fetch timezone.");
+              } else if (response.statusCode === 200) {
+                var dateMidway = body.formatted;
+                var dateMidwayFormatted = new Date(dateKiri);
+                var dayMidway = dateKiriFormatted.getDay();
+                if (dayMidway === 6) {
+                  res.render("saturday.hbs", {
+                    pageTitle: "Is it saturday?",
+                    welcomeMessage: "let's find out",
+                    saturday: "YES!",
+                    video: "https://my.mixtape.moe/ymiizt.mp4",
+                    color: "green"
+                  });
+                } else {
+                  res.render("saturday.hbs", {
+                    pageTitle: "Is it saturday?",
+                    welcomeMessage: "let's find out",
+                    saturday: "NO!",
+                    video: "https://my.mixtape.moe/kqpane.mp4",
+                    color: "red"
+                  });
+                }
+              }
+            }
+          );
         }
       }
     }

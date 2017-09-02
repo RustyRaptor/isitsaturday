@@ -12,12 +12,38 @@
     <title>Is it Saturday?-{{saturday}}</title>
   </head>
   <body>
+  <style>
+    video#bgvid {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    z-index: -100;
+    background-size: cover;
+  }
+    #overlay {
+    font-family: 'Advent Pro', sans-serif;
+    font-size: 7em;
+    margin: .2em .5em;
+    color: rgba(255, 255, 255, 1);
+    position: fixed;
+    right: 0;
+  }
+  </style>
 
 
-    <div class="container">
-      <div class="jumbotron">
-        <h1 class="lead" style="text-align: center; font-size: 2500%; color: {{color}}; text-shadow: 8px 8px 8px #000000;">{{screamIt saturday}}</h1>
-      </div>
-    </div>
+
+  <!-- <div class="container"> -->
+    <!-- <div class="jumbotron"> -->
+      <div id="overlay" style="font-size: 2500%; color: {{color}}; text-shadow: 8px 8px 8px #000000;">{{saturday}}</div>
+      <video autoplay="" loop=""  id="bgvid">
+        <source src="https://my.mixtape.moe/kqpane.mp4" type="video/mp4">
+      </video>
+
+
+      <!-- <h1 class="lead" style="text-align: center; font-size: 2500%; color: {{color}}; text-shadow: 8px 8px 8px #000000;">{{screamIt saturday}}</h1> -->
+    <!-- </div> -->
+  <!-- </div> -->
     {{footer}}
 </html>
