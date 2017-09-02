@@ -73,8 +73,9 @@ app.get("/", (req, res) => {
                 console.log("Unable to fetch timezone.");
               } else if (response.statusCode === 200) {
                 var dateMidway = body.formatted;
-                var dateMidwayFormatted = new Date(dateKiri);
-                var dayMidway = dateKiriFormatted.getDay();
+                var dateMidwayFormatted = new Date(dateMidway);
+                var dayMidway = dateMidwayFormatted.getDay();
+                console.log(dayMidway);
                 if (dayMidway === 6) {
                   res.render("saturday.hbs", {
                     pageTitle: "Is it saturday?",
