@@ -35,9 +35,13 @@
       position: fixed;
       right: 0;
     }
+    html, body {height: 100%; width: 100%;}
+    h1 {text-align: center; display: inline-block; vertical-align: middle;}
+    .center {position: absolute; top: 0; left: 0; right: 0; left: 0; text-align: center; border: 1px solid #ccc; height: 100%; width: 100%; vertical-align: middle;}
     </style>
 
-        <div id="overlay" style="font-size: 2500%; color: {{color}}; text-shadow: 8px 8px 8px #000000;">{{saturday}}</div>
+        <div class="center" style="font-size: 300%;  color: {{color}}; text-shadow: 8px 8px 8px #000000;">{{saturday}}
+        </div>
         <video autoplay="" loop=""  id="bgvid">
           <source src="{{video}}" type="video/mp4">
             <!-- https://my.mixtape.moe/ymiizt.mp4 -->
