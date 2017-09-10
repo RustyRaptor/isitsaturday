@@ -21,25 +21,16 @@ app.use((req, res, next) => {
 
 app.use(express.static(__dirname + '/public'))
 
-function showYes(res) {
+// NOTE: The conditional logic on the colors and text etc. could probably be moved
+// to the template itself.
+function renderPage (res, saturday) {
   res.render('saturday.hbs', {
     pageTitle: 'Is it saturday?',
-    welcomeMessage: "let's find out",
-    saturday: 'YES!',
-    video: 'https://my.mixtape.moe/ymiizt.mp4',
-    preview: 'http://i.imgur.com/o9fmi5P.png',
-    color: 'green'
-  })
-}
-
-function showNo(res) {
-  res.render('saturday.hbs', {
-    pageTitle: 'Is it saturday?',
-    welcomeMessage: "let's find out",
-    saturday: 'NO!',
-    video: 'https://my.mixtape.moe/kqpane.mp4',
-    preview: 'http://i.imgur.com/DNMyePH.png',
-    color: 'red'
+    welcomeMessage: 'let\'s find out',
+    saturday: saturday ? 'YES!' : 'NO!',
+    video: saturday ? 'https://my.mixtape.moe/ymiizt.mp4' : 'https://my.mixtape.moe/kqpane.mp4',
+    preview: saturday ? 'http://i.imgur.com/o9fmi5P.png' : 'http://i.imgur.com/DNMyePH.png',
+    color: saturday ? 'green' : 'red'
   })
 }
 
@@ -87,11 +78,7 @@ app.get('/', (req, res) => {
   Promise.race(
     locations.map(checkTime)
   ).then((day) => {
-    if (day === 6) {
-      showYes(res)
-    } else {
-      showNo(res)
-    }
+    renderPage (res, day === 6)
   })
 })
 
