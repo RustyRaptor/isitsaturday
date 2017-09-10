@@ -1,8 +1,6 @@
 const express = require('express'),
-  request = require('request'),
   hbs = require('hbs'),
   fs = require('fs'),
-  date = require('date'),
   port = process.env.PORT || 3000
 
 var app = express()
@@ -34,52 +32,27 @@ function renderPage (res, saturday) {
   })
 }
 
-var checkTime = (loc) => {
-  var targetDate = new Date()
-  var timestamp =
-    targetDate.getTime() / 1000 + targetDate.getTimezoneOffset() * 60
-  var apikey = 'AIzaSyCLyhjhNaATDcLRjm6BRfEIVtZImQ6HGHM '
-  var apicall =
-    'https://maps.googleapis.com/maps/api/timezone/json?' +
-    'location=' +
-    loc +
-    '&timestamp=' +
-    timestamp +
-    '&key=' +
-    apikey
-  var options = {
-    url: apicall,
-    json: true
+const isItSaturday = () => {
+  const calculateTimeAtOffset = (offset) => {
+    var d = new Date()
+
+    // convert to msec
+    // add local time zone offset
+    // get UTC time in msec
+    var utc = d.getTime() + (d.getTimezoneOffset() * 60000)
+
+    // create new Date object sing supplied offset
+    return new Date(utc + (3600000 * offset))
   }
-
-  return new Promise((resolve, reject) => {
-    request(options, (error, response, body) => {
-      if (error) {
-        reject('Unable to connect to timezonedb server.')
-      } else if (response.statusCode === 400) {
-        reject('Unable to fetch timezone.')
-      } else if (response.statusCode === 200) {
-        var offsets = body.dstOffset * 1000 + body.rawOffset * 1000
-
-        var localdate = new Date(timestamp * 1000 + offsets)
-        process.day = localdate.getDay()
-      }
-
-      resolve(process.day)
-    })
-  })
+  
+  // Saturday in />p/ is defined as Saturday in all timezones between
+  // UTC-12 and UTC+14.
+  return calculateTimeAtOffset(-12).getDay() === 6 ||
+    calculateTimeAtOffset(14).getDay() === 6
 }
 
 app.get('/', (req, res) => {
-  const locations = [
-    '28.2079353,-177.3728662'
-  ]
-
-  Promise.race(
-    locations.map(checkTime)
-  ).then((day) => {
-    renderPage (res, day === 6)
-  })
+  renderPage (res, isItSaturday())
 })
 
 app.listen(port, () => {
