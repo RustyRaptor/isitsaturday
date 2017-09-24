@@ -1,50 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta property="og:url"                content="https://isitsaturday.herokuapp.com" />
-    <meta property="og:type"               content="image" />
-    <meta property="og:title"              content="Is it Saturday? {{saturday}}" />
-    <meta property="og:description"        content="Shitpost saturday checker feat. jojo" />
-    <meta property="og:image"              content="{{preview}}" />
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Shitpost saturday checker">
-    <meta name="author" content="Ziad Alexander">
-    <link rel="icon" href="./favicon.ico">
-    <!-- <link href="./css/bootstrap.min.css" rel="stylesheet">
-    <link href="./jumbotron-narrow.css" rel="stylesheet"> -->
-    <title>Is it Saturday?-{{saturday}}</title>
-  </head>
-  <body>
-    <style>
-      video#bgvid {
-      position: fixed;
-      right: 0;
-      top: 0;
-      width: 100%;
-      height: auto;
-      z-index: -100;
-      background-size: cover;
-    }
-      #overlay {
-      font-family: 'Advent Pro', sans-serif;
-      font-size: 7em;
-      margin: .2em .5em;
-      color: rgba(255, 255, 255, 1);
-      position: fixed;
-      right: 0;
-    }
-    html, body {height: 100%; width: 100%;}
-    h1 {text-align: center; display: inline-block; vertical-align: middle;}
-    .center {position: absolute; top: 0; left: 0; right: 0; left: 0; text-align: center; border: 1px solid #ccc; height: 100%; width: 100%; vertical-align: middle;}
-    </style>
+<head>
+  <meta property="og:url"                content="https://isitsaturday.herokuapp.com" />
+  <meta property="og:type"               content="image" />
+  <meta property="og:title"              content="Is it Saturday? {{saturday}}" />
+  <meta property="og:description"        content="Shitpost saturday checker feat. jojo" />
+  <meta property="og:image"              content="{{preview}}" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Shitpost saturday checker">
+  <meta name="author" content="Ziad Alexander">
+  <link rel="icon" href="./favicon.ico">
 
-        <div class="center" style="font-size: 300%;  color: {{color}}; text-shadow: 8px 8px 8px #000000;">{{saturday}}
-        </div>
-        <video autoplay="" loop=""  id="bgvid">
-          <source src="{{video}}" type="video/mp4">
-            <!-- https://my.mixtape.moe/ymiizt.mp4 -->
-        </video>
+  <title>Is it Saturday?-{{saturday}}</title>
+</head>
 
+<body>
+  <style>
+    video#bgvid {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    z-index: -100;
+    background-size: cover;
+  }
+    #overlay {
+    font-family: 'Advent Pro', sans-serif;
+    font-size: 7em;
+    margin: .2em .5em;
+    color: rgba(255, 255, 255, 1);
+    position: fixed;
+    right: 0;
+  }
+  html, body {height: 100%; width: 100%;}
+  h1 {text-align: center; display: inline-block; vertical-align: middle;}
+  .center {position: absolute; top: 0; left: 0; right: 0; left: 0; text-align: center; border: 1px solid #ccc; height: 100%; width: 100%; vertical-align: middle;}
+  </style>
+
+  <div class="center" style="font-size: 300%;  color: {{color}}; text-shadow: 8px 8px 8px #000000;">{{saturday}}
+  </div>
+  <video autoplay="" loop=""  id="bgvid">
+    <source src="{{video}}" type="video/mp4">
+  </video>
+</body>
 </html>
