@@ -26,8 +26,10 @@ function renderPage (res, saturday) {
     pageTitle: 'Is it saturday?',
     welcomeMessage: 'let\'s find out',
     saturday: saturday ? 'YES!' : 'NO!',
-    video: saturday ? 'https://my.mixtape.moe/ymiizt.mp4' : 'https://my.mixtape.moe/kqpane.mp4',
-    preview: saturday ? 'http://i.imgur.com/o9fmi5P.png' : 'http://i.imgur.com/DNMyePH.png',
+    video: saturday ?
+      'https://my.mixtape.moe/ymiizt.mp4' : 'https://my.mixtape.moe/kqpane.mp4',
+    preview: saturday ?
+      'http://i.imgur.com/o9fmi5P.png' : 'http://i.imgur.com/DNMyePH.png',
     color: saturday ? 'green' : 'red'
   })
 }
