@@ -51,7 +51,12 @@ export PORT=3002
 ```
 if you want it to listen on port 3002. 
 
-When you start the server it will print out a message the includes the port it is running on. If the number matches the port you set then you've set it successfully. 
+When you start the server it will print out a message that includes the port it is running on. If the number matches the port you set then you've set it successfully. 
+
+It will look something like: 
+```
+Server is up on port 3000
+```
 
 Now to see it in action open a web browser and point it to localhost:<port_number>
 replacing <port_number> with the port you set or with 3000 if you used the default port like so:
