@@ -16,7 +16,7 @@
   <title>Is it Saturday?-{{saturday}}</title>
 </head>
 
-<body>
+<body style="margin: 0px; overflow: hidden;">
   <style>
     video#bgvid {
     position: fixed;
@@ -26,6 +26,7 @@
     height: auto;
     z-index: -100;
     background-size: cover;
+    overflow: hidden;
   }
     #overlay {
     font-family: 'Advent Pro', sans-serif;
@@ -34,13 +35,14 @@
     color: rgba(255, 255, 255, 1);
     position: fixed;
     right: 0;
+    overflow: hidden
   }
   html, body {height: 100%; width: 100%;}
   h1 {text-align: center; display: inline-block; vertical-align: middle;}
   .center {position: absolute; top: 0; left: 0; right: 0; left: 0; text-align: center; border: 1px solid #ccc; height: 100%; width: 100%; vertical-align: middle;}
   </style>
 
-  <div class="center" style="font-size: 300%;  color: {{color}}; text-shadow: 8px 8px 8px #000000;">{{saturday}}
+  <div class="center" style="font-size: 300%;  color: {{color}}; text-shadow: 8px 8px 8px #000000; overflow: hidden;">{{saturday}}
   </div>
   <video autoplay="" loop=""  id="bgvid">
     <source src="{{video}}" type="video/mp4">
