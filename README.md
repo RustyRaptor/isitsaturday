@@ -1,6 +1,6 @@
 # IsItSaturday
 
-This is a web app which checks if it is Saturday anywhere in the world in order to let the user know if it is time to shitpost on />p/ or not. 
+This is a web app which checks if it is Saturday anywhere in the world in order to let the user know if it is time to ****post on />p/ or not. 
 
 />p/ is a facebook group for discussing programming and anything STEM related called Implying We Can Programming. You can find it here. https://www.facebook.com/groups/implyingprogramming/
 
