@@ -43,7 +43,69 @@
   </style>
 
   <div class="center" style="font-size: 300%;  color: {{color}}; text-shadow: 8px 8px 8px #000000; overflow: hidden;">{{saturday}}
-  </div>
+     <h3 id="timer">calculating...</h3>
+    <script>
+        var calculateFastFsh = function() {
+            var now = moment();
+            var sunday = 0;
+            var saturday = 6;
+            var earliest = now.tz('Etc/GMT-14').day();
+            var latest = now.tz('Etc/GMT+12').day();
+            var boolyeen = (earliest === saturday || latest === saturday) ? "yes" : "no";
+            document.getElementById("saturday").innerHTML = boolyeen;
+            document.getElementById("saturday").setAttribute("class", boolyeen);
+            if (boolyeen === "yes") {
+                var lastFirstSunday = moment();
+                lastFirstSunday.tz('Etc/GMT+12');
+                lastFirstSunday.isoWeekday(sunday);
+                lastFirstSunday.set('hour', 0);
+                lastFirstSunday.set('minute', 0);
+                lastFirstSunday.set('second', 0);
+                lastFirstSunday.set('ms', 0);
+                now.tz('Etc/GMT+12');
+                var diff = lastFirstSunday.valueOf() - now.valueOf();
+                var hours = Math.floor(diff / 1000 / 60 / 60);
+                var minutes = Math.floor((diff - (hours * 1000 * 60 * 60)) / 1000 / 60);
+                var seconds = Math.floor((((diff - (hours * 1000 * 60 * 60)) - (minutes * 1000 * 60)) / 1000));
+                var timer = "saturday will end in: ";
+                if (hours == 0 && minutes == 0 && seconds == 0) {
+                    timer = "SATURDAY IS OVER!";
+                } else {
+                    timer = timer
+                        + (hours > 0 ? (hours == 1 ? hours + " hour, " : hours + " hours, ") : "")
+                        + (minutes > 0 ? (minutes == 1 ? minutes + " minute, " : minutes + " minutes, "): "")
+                        + (hours != 0 && minutes != 0 ? " and " : "") + (seconds == 1 ? seconds + " second" : seconds + " seconds");
+                }
+                document.getElementById("timer").innerHTML = timer;
+            } else {
+                var nextSaturday = moment();
+                nextSaturday.tz('Etc/GMT-14');
+                nextSaturday.isoWeekday(saturday);
+                nextSaturday.set('hour', 0);
+                nextSaturday.set('minute', 0);
+                nextSaturday.set('second', 0);
+                nextSaturday.set('ms', 0);
+                now.tz('Etc/GMT-14');
+                var diff = nextSaturday.valueOf() - now.valueOf();
+                var hours = Math.floor(diff / 1000 / 60 / 60);
+                var minutes = Math.floor((diff - (hours * 1000 * 60 * 60)) / 1000 / 60);
+                var seconds = Math.floor((((diff - (hours * 1000 * 60 * 60)) - (minutes * 1000 * 60)) / 1000));
+                var timer = "it will be saturday in: ";
+                if (hours == 0 && minutes == 0 && seconds == 0) {
+                    timer = "SATURDAY BEGINS!";
+                } else {
+                    timer = timer
+                        + (hours > 0 ? (hours == 1 ? hours + " hour, " : hours + " hours, ") : "")
+                        + (minutes > 0 ? (minutes == 1 ? minutes + " minute, " : minutes + " minutes, "): "")
+                        + (hours != 0 && minutes != 0 ? " and " : "") + (seconds == 1 ? seconds + " second" : seconds + " seconds");
+                }
+                document.getElementById("timer").innerHTML = timer;
+            }
+            window.setTimeout(calculateFastFsh, 1000);
+        }
+        calculateFastFsh();
+    </script>
+ </div>
   <video autoplay="" loop=""  id="bgvid">
     <source src="{{video}}" type="video/mp4">
   </video>
