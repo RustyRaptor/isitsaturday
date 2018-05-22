@@ -23,13 +23,13 @@ app.use(express.static(__dirname + '/public'))
 // to the template itself.
 function renderPage (res, saturday) {
   res.render('saturday.hbs', {
-    pageTitle: 'Is it saturday?',
+    pageTitle: 'Is it E?',
     welcomeMessage: 'let\'s find out',
-    saturday: saturday ? 'YES!' : 'NO!',
+    saturday: saturday ? 'E!' : 'e!',
     video: saturday ?
-      'https://my.mixtape.moe/ymiizt.mp4' : 'https://my.mixtape.moe/kqpane.mp4',
+      'https://my.mixtape.moe/ymiizt.mp4' : 'https://my.mixtape.moe/ymiizt.mp4',
     preview: saturday ?
-      'http://i.imgur.com/o9fmi5P.png' : 'http://i.imgur.com/DNMyePH.png',
+      'http://i.imgur.com/o9fmi5P.png' : 'http://i.imgur.com/o9fmi5P.png',
     color: saturday ? 'green' : 'red'
   })
 }
