@@ -10,7 +10,7 @@ This web app uses a NodeJS Express web server and Handlebars for template render
 Make sure you have git installed. Follow your operating system's instructions to install it. 
 1. In Ubuntu it is simply:
 ```
-apt get install git
+sudo apt install git
 ```
 2. Clone this repository by running:
 ```
@@ -22,7 +22,7 @@ git clone https://github.com/RustyRaptor/isitsaturday.git
 
 ### Prerequisites
 
-Make sure you have the latest version of NodeJS and NPM installed. I recommend installing it in it's own folder seperate from the system's installed version. However if you don't want to do that just follow your distro's instructions for installing them. 
+Make sure you have the latest version of NodeJS and NPM installed. I recommend installing it using NVM you can find NVM and install instructions at https://github.com/nvm-sh/nvm
 
 NodeJS website: 
 https://nodejs.org
@@ -30,9 +30,11 @@ https://nodejs.org
 ### Installing
 
 1. In the root folder of the project run:
+
 ```
 npm install
 ``` 
+
 
 2. Now in the same folder run:
 ```
